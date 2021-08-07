@@ -1,17 +1,21 @@
 import React, { FC } from 'react'
-import { Layout } from 'antd';
-import TheHeader from '../Component/UI/TheHeader';
-import TheSideBar from '../Component/UI/TheSideBar';
-import MainContent from '../Component/UI/MainContent';
+ import TheHeader from '../Component/UI/TheHeader';
+ import TheSideBar from '../Component/UI/TheSideBar';
+import { Layout} from 'antd';
+ import MainContent from '../Component/UI/MainContent';
+
+
 const Home:FC = () => {
     return (
         <Layout>
-            <TheHeader />
-            <Layout>
-                <TheSideBar/>
+        <TheHeader/>
+        <Layout>
+            <TheSideBar/>
+            <Layout style={{ padding: '0 24px 24px', marginTop:24 }}>
                 <MainContent/>
             </Layout>
         </Layout>
+      </Layout>
     )
 }
 

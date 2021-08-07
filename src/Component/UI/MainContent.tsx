@@ -1,10 +1,19 @@
+import { Layout} from 'antd';
 import React from 'react'
-
+const {Content}=Layout;
 const MainContent:React.FC = () => {
     return (
-        <div>
-            Main Content
-        </div>
+        <Content
+            
+            style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+                backgroundColor:'#fff'
+            }}
+            >
+            Content
+            </Content>
     )
 }
 
