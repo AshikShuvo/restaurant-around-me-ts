@@ -20,7 +20,7 @@ export class Restaurant{
         this.location=new Location(location.lat,location.lng,location.formattedAddress)
     }
 }
-class Location{
+ class Location{
     lat:number;
     lng:number;
     address:string;

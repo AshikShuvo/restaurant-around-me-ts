@@ -1,5 +1,6 @@
 import { Layout} from 'antd';
-import React from 'react'
+import React from 'react';
+import Map from './Map';
 const {Content}=Layout;
 const MainContent:React.FC = () => {
     return (
@@ -12,7 +13,7 @@ const MainContent:React.FC = () => {
                 backgroundColor:'#fff'
             }}
             >
-            Content
+            <Map/>
             </Content>
     )
 }
