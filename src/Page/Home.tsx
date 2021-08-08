@@ -11,14 +11,14 @@ import { mapSelector } from '../Store';
 import { restaurantsActions } from '../Store/restaurants-slice';
 const Home:FC = () => {
     const dispatch=useDispatch();
-      const {userLocation,searchArea}=useSelector(mapSelector)
+      const {userLocation,searchArea,reRenderer}=useSelector(mapSelector)
     // console.log(userLocation)
     useEffect(() => {
         getCurrentLocation()      
     },[])
     useEffect(()=>{
         fetchRestaurantData();
-    },[userLocation])
+    },[userLocation,reRenderer])
 
     const getCurrentLocation=():void=>{ 
         //function to get user location and populate the local state named userLocation

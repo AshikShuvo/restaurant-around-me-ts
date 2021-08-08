@@ -12,10 +12,11 @@ declare global{
 
 const { google} = window; //window got accessed to google map related services api via script attached in public/index.html
 const Map:React.FC = () => {
-    const {userLocation}=useSelector(mapSelector)
+    const {userLocation,direction,targetLocation}=useSelector(mapSelector)
     const {restaurants}=useSelector(restaurantsSelector)
     const mapRef = useRef(null); //reference to the div where the map will be mounted
     let userLatlng = new google.maps.LatLng(userLocation.latitude, userLocation.longitude);//used by google place api
+    const directionService = new window.google.maps.DirectionsRenderer();
     useEffect(() => {
         initGoogleMap();
     });
@@ -51,6 +52,30 @@ const Map:React.FC = () => {
                     label:name,
                 });
             });
+
+            const drawRoute = () => {
+                new window.google.maps.DirectionsService().route({
+                    origin: userLatlng,
+                    destination: new window.google.maps.LatLng(targetLocation.lat, targetLocation.lng),
+                    travelMode: 'DRIVING'
+                }, (response:any, status:any) => {
+                    if (status === 'OK') {
+                        directionService.setDirections(response);
+                    } else {
+                        console.log("couldn't find route");
+                    }
+                });
+            }
+            if(direction){
+                const selectedAddress = new window.google.maps.LatLng(targetLocation.lat, targetLocation.lng);
+            directionService.setMap(map)
+            drawRoute();
+            let bounds = new window.google.maps.LatLngBounds();
+            bounds.extend(selectedAddress);
+            bounds.extend(userLatlng);
+            map.fitBounds(bounds);
+            }
+           
         }
     }
     return (

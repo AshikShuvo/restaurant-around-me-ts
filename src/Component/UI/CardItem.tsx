@@ -4,12 +4,13 @@ import Meta from 'antd/lib/card/Meta'
 import React from 'react'
 import { Restaurant } from '../../Model'
 
-const CardItem:React.FC <{restaurantData:Restaurant}>= ({restaurantData}) => {
+const CardItem:React.FC <{restaurantData:Restaurant,clickHandler:any}>= ({restaurantData,clickHandler}) => {
     const {id,name,distance,location}=restaurantData
     return (
     <Card
         hoverable
         style={{ width: 250, marginTop: 16,marginLeft:25 }}
+        onClick={()=>clickHandler(restaurantData.id)}
     >
        <Meta
         avatar={
