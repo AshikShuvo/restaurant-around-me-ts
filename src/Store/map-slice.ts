@@ -6,7 +6,8 @@ const location=new UserLocation(23.8349877,90.41676420000002)
 const mapSlice=createSlice({
     name:'mapState',
     initialState:{
-        userLocation:location
+        userLocation:location,
+        searchArea:3000
     },
     reducers:{
         setUserLocation(state,action){

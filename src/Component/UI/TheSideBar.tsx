@@ -1,11 +1,15 @@
-import { Card, Col, Layout, Menu, Row, Space} from 'antd';
-import React from 'react';
+import {  Layout} from 'antd';
+import React, { useState } from 'react';
 import { Input } from 'antd';
-import Meta from 'antd/lib/card/Meta';
-import Avatar from 'antd/lib/avatar/avatar';
+import CardItem from './CardItem';
+import { restaurantsSelector } from '../../Store';
+import { useSelector } from 'react-redux';
+import { Restaurant } from '../../Model';
 const {Sider}=Layout;
 
 const TheSideBar:React.FC = () => {
+    const [searchParam,setSearchParam]=useState('')
+    const {restaurants}= useSelector(restaurantsSelector)
     return (
         <Sider
             style={{
@@ -18,29 +22,8 @@ const TheSideBar:React.FC = () => {
             width={300}
         >
             
-                <Input placeholder="search for restaurants"  style={{backgroundColor:"#00008B",color:'#fff'}}/>
-               
-                <Card
-                    hoverable
-                    style={{ width: 250, marginTop: 16,marginLeft:25 }}
-                >
-                   <Meta
-              avatar={
-                <Avatar src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" />
-              }
-              title="Card title"
-              description="This is the description"
-            />
-                </Card>
-                  
-               
-                                
-                
-             
-             
-               
-        
-            
+         <Input onChange={(e=>setSearchParam(e.target.value))} placeholder="search for restaurants"  style={{backgroundColor:"#00008B",color:'#fff'}}/>
+         {restaurants.length>0&& restaurants.filter((item:Restaurant)=>item.name.toLowerCase().includes(searchParam.toLowerCase())).map((item:Restaurant) =><CardItem key={item.id} restaurantData={item}/>)}
       </Sider>
     )
    

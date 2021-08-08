@@ -11,7 +11,7 @@ import { mapSelector } from '../Store';
 import { restaurantsActions } from '../Store/restaurants-slice';
 const Home:FC = () => {
     const dispatch=useDispatch();
-      const {userLocation}=useSelector(mapSelector)
+      const {userLocation,searchArea}=useSelector(mapSelector)
     // console.log(userLocation)
     useEffect(() => {
         getCurrentLocation()      
@@ -32,7 +32,7 @@ const Home:FC = () => {
 
     // fetch restaurant related data
     const fetchRestaurantData=():void=>{
-        axios.get(`https://api.foursquare.com/v2/venues/explore?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&v=20180805&limit=50&ll=${userLocation.latitude},${userLocation.longitude}&radius=${3000}&query=food`)
+        axios.get(`https://api.foursquare.com/v2/venues/explore?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&v=20180805&limit=50&ll=${userLocation.latitude},${userLocation.longitude}&radius=${searchArea}&query=food`)
         .then((res) => {
             const restaurants:any=[];
           res.data.response.groups[0].items.forEach((item:any)=>{
