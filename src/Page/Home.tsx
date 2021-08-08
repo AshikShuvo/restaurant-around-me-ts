@@ -6,8 +6,9 @@ import MainContent from '../Component/UI/MainContent';
 import { useDispatch,useSelector } from 'react-redux';
 import { mapActions } from '../Store/map-slice';
 import axios from 'axios';
-import { UserLocation } from '../Model';
+import { Restaurant, UserLocation } from '../Model';
 import { mapSelector } from '../Store';
+import { restaurantsActions } from '../Store/restaurants-slice';
 const Home:FC = () => {
     const dispatch=useDispatch();
       const {userLocation}=useSelector(mapSelector)
@@ -36,23 +37,13 @@ const Home:FC = () => {
             const restaurants:any=[];
           res.data.response.groups[0].items.forEach((item:any)=>{
               const {id,name,location,}=item.venue;
-              const restaurant={
-                  id,
-                  name,
-                  location:{
-                      lat:location.lat,
-                      lng:location.lng,
-                      address:location.formattedAddress.toString()
-                  },
-                  distance:location.distance/1000
-              };
-            //   const restaurant= id,name,location.distance/1000,{lat:location.lat,lng:location.lng,formattedAddress:location.formattedAddress})
-              restaurants.push(restaurant);
+            const restaurant=new Restaurant(id,name,location.distance/1000,{lat:location.lat,lng:location.lng,formattedAddress:location.formattedAddress});
+            restaurants.push(restaurant);
 
           })
           //dispatching an action to populate restaurantsState belongs to root state in the redux store with all fetched restaurants data
-        //   dispatch(restaurantsActions.setRestaurants(restaurants))
-        console.log(JSON.stringify(restaurants));
+          dispatch(restaurantsActions.setRestaurants(restaurants))
+        
         })
         .catch(err => console.error(err));
     }
