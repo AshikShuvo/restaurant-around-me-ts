@@ -9,7 +9,7 @@ const TheHeader:React.FC = () => {
             backgroundColor:"#0000FF",
         }}
         >
-            <h2 style={{color:'#fff'}}><strong>Khamu Koi?</strong></h2>
+            <h2 style={{color:'#fff'}}><strong>Khabo Koi?</strong></h2>
         </Header>
     )
 }
