@@ -5,7 +5,7 @@ import React from 'react'
 import { Restaurant } from '../../Model'
 
 const CardItem:React.FC <{restaurantData:Restaurant,clickHandler:any}>= ({restaurantData,clickHandler}) => {
-    const {id,name,distance,location}=restaurantData
+    const {name,distance,location}=restaurantData
     return (
     <Card
         hoverable
