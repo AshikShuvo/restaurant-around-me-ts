@@ -8,7 +8,7 @@ It is a kind of app which will help you to find restaurants around your 3 km are
 -Reactjs with Typescript template
 -Redux
 -Ant ui library.
--Google Map Api Service
+-Google Map Api Service. (works only on localhost as using a free trial key)
 -Foursquare place api service
 
 ## Features
