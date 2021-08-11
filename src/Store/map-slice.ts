@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
 import { UserLocation } from "../Model";
 //act as an slice of redux store 
 //all the logical action and mutation related to map can be managed here
