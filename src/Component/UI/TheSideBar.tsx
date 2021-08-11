@@ -5,8 +5,8 @@ import CardItem from './CardItem';
 import { restaurantsSelector } from '../../Store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Restaurant } from '../../Model';
-import { restaurantsActions } from '../../Store/restaurants-slice';
 import { mapActions } from '../../Store/map-slice';
+import './theSider.css';
 const {Sider}=Layout;
 
 const TheSideBar:React.FC = () => {
@@ -20,13 +20,14 @@ const TheSideBar:React.FC = () => {
     }
     return (
         <Sider
-            style={{
-                overflow: 'auto',
-                height: '573px',
-                left: 0,
+            // style={{
+            //     overflow: 'auto',
+            //     height: '573px',
+            //     left: 0,
               
-                backgroundColor:'	#00008B'
-            }}
+            //     backgroundColor:'	#00008B'
+            // }}
+            className="siderStyle"
             width={300}
         >
             

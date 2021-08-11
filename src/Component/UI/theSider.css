@@ -1,0 +1,6 @@
+.siderStyle{
+    overflow: auto;
+    height: calc(100vh - 64px);
+    left: 0;
+    background-color:#00008B;
+}
